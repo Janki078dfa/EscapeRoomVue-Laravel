@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-12 mb-2">
                                 <div class="form-group">
-                                    <label>Phone</label>
+                                    <label>Country</label>
                                     <input type="text" class="form-control"
                                            v-model="booking.country">
                                 </div>
@@ -42,11 +42,10 @@
 
                             <div class="col-12 mb-2">
                                 <div class="form-group">
+                                    <label>Select the user:</label>
                                     <select name="user-select" class="form-select" aria-label="Default select example">
                                         <option selected>Select the user you want to assign:</option>
-                                        <option v-for="u in users" :key="u.id" id="{{ u.id }}" value="{{ u.id }}"
-                                                name="{{ u.id }}">{{ u.name }}
-                                        </option>
+                                        <option v-for="u in users" :key="u.id">{{ u.name }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -73,6 +72,8 @@ export default {
                 email: "",
                 phone: "",
                 country: "",
+                user_id: 1,
+                room_id: 1
             },
             users: []
         }
@@ -82,11 +83,15 @@ export default {
     },
     methods: {
         async create() {
-            await this.axios.post('/api/blog', this.booking).then(response => {
-                this.$router.push({name: "show"})
-            }).catch(error => {
-                console.log(error)
+            await this.axios.post('/api/booking', this.booking).then(response => {
+                this.$router.push({name: "showBookings"})
+            }).then(response => {
+                console.log(response)
             })
+                .catch(error => {
+                    console.log(error.response)
+                });
+
         },
 
         async read() {
