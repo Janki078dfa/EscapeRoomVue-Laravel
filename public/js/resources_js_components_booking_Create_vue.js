@@ -103,8 +103,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         email: "",
         phone: "",
         country: "",
+        //TODO AGAFAR ELS ITEMS SELECTED DELS DROPDOWN
         user_id: 1,
-        room_id: 1
+        room_id: 2
       },
       users: []
     };

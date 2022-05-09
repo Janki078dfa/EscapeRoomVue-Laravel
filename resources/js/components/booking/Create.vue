@@ -72,8 +72,9 @@ export default {
                 email: "",
                 phone: "",
                 country: "",
+                //TODO AGAFAR ELS ITEMS SELECTED DELS DROPDOWN
                 user_id: 1,
-                room_id: 1
+                room_id: 2,
             },
             users: []
         }
