@@ -1,0 +1,95 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Game;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+class GameController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
+    {
+        return response()->json(Game::all());
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function store(Request $request): JsonResponse
+    {
+        return response()->json([
+            'game' => Game::create($request->post())
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Game $g
+     * @return JsonResponse
+     */
+    public function show(Game $g): JsonResponse
+    {
+        return response()->json($g);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param Game $g
+     * @return JsonResponse
+     */
+    public function update(Request $request, Game $g): JsonResponse
+    {
+        $g->fill($request->post())->save();
+        return response()->json([
+            'game' => $g
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Game $g
+     * @return JsonResponse
+     */
+    public function destroy(Game $g): JsonResponse
+    {
+        $g->delete();
+        return response()->json([
+            'msg' => 'Game deleted'
+        ]);
+    }
+}
