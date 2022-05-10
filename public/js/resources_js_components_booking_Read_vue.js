@@ -67,6 +67,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "bookings",
   data: function data() {
@@ -101,6 +112,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    deleteBooking: function deleteBooking(id) {
+      var _this2 = this;
+
+      console.log(id);
+      this.axios["delete"]("/api/booking/".concat(id)).then(function (response) {
+        _this2.showBookings();
+      }).then(function (response) {
+        console.log("ID: " + id);
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     }
   }
 });
@@ -983,13 +1006,23 @@ var render = function () {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.booking, function (blog) {
-              return _c("tr", { key: blog.id }, [
-                _c("td", [_vm._v(_vm._s(blog.id))]),
+            _vm._l(_vm.booking, function (b) {
+              return _c("tr", { key: b.id }, [
+                _c("td", [_vm._v(_vm._s(b.id))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(blog.name))]),
+                _c("td", [_vm._v(_vm._s(b.name))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(blog.company))]),
+                _c("td", [_vm._v(_vm._s(b.company))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(b.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(b.phone))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(b.country))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(b.user_id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(b.room_id))]),
                 _vm._v(" "),
                 _c(
                   "td",
@@ -999,10 +1032,24 @@ var render = function () {
                       {
                         staticClass: "btn btn-info",
                         attrs: {
-                          to: { name: "editarBlog", params: { id: blog.id } },
+                          to: { name: "updateBooking", params: { id: b.id } },
                         },
                       },
                       [_c("i", { staticClass: "fas fa-edit" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.deleteBooking(b.id)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fas fa-trash" })]
                     ),
                   ],
                   1
@@ -1025,9 +1072,19 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Title")]),
+        _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Content")]),
+        _c("th", [_vm._v("Company")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Phone")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Country")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("User ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Room ID")]),
         _vm._v(" "),
         _c("th", [_vm._v("Actions")]),
       ]),

@@ -11,20 +11,31 @@
                     <thead class="bg-primary text-white">
                     <tr>
                         <th>ID</th>
-                        <th>Title</th>
-                        <th>Content</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Country</th>
+                        <th>User ID</th>
+                        <th>Room ID</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="blog in booking" :key="blog.id">
-                        <td>{{ blog.id }}</td>
-                        <td>{{ blog.name }}</td>
-                        <td>{{ blog.company }}</td>
+                    <tr v-for="b in booking" :key="b.id">
+                        <td>{{ b.id }}</td>
+                        <td>{{ b.name }}</td>
+                        <td>{{ b.company }}</td>
+                        <td>{{ b.email }}</td>
+                        <td>{{ b.phone }}</td>
+                        <td>{{ b.country }}</td>
+                        <td>{{ b.user_id }}</td>
+                        <td>{{ b.room_id }}</td>
                         <td>
-                            <!-- llamamos al componente para Editar     -->
-                            <router-link :to='{name:"editarBlog",params:{id:blog.id}}' class="btn btn-info"><i
+                            <router-link :to='{name:"updateBooking",params:{id:b.id}}' class="btn btn-info"><i
                                 class="fas fa-edit"></i></router-link>
+                            <a type="button" @click="deleteBooking(b.id)" class="btn btn-danger"><i
+                                class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -55,6 +66,18 @@ export default {
                 this.booking = []
             })
         },
+
+        deleteBooking(id) {
+            console.log(id);
+            this.axios.delete(`/api/booking/${id}`).then(response => {
+                this.showBookings()
+            }).then(response => {
+                console.log("ID: " + id)
+            }).catch(error => {
+                console.log(error.response)
+            });
+
+        }
     }
 }
 </script>

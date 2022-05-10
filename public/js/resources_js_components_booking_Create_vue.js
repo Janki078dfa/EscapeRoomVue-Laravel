@@ -93,6 +93,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "createBooking",
   data: function data() {
@@ -103,15 +113,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         email: "",
         phone: "",
         country: "",
-        //TODO AGAFAR ELS ITEMS SELECTED DELS DROPDOWN
-        user_id: 1,
-        room_id: 2
+        user_id: "",
+        room_id: ""
       },
-      users: []
+      users: [],
+      rooms: []
     };
   },
   mounted: function mounted() {
-    this.read();
+    this.readUsers();
+    this.readRooms();
   },
   methods: {
     create: function create() {
@@ -125,7 +136,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 2;
                 return _this.axios.post('/api/booking', _this.booking).then(function (response) {
                   _this.$router.push({
-                    name: "showBookings"
+                    name: "showBooking"
                   });
                 }).then(function (response) {
                   console.log(response);
@@ -141,7 +152,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    read: function read() {
+    readUsers: function readUsers() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -163,6 +174,66 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee2);
+      }))();
+    },
+    readRooms: function readRooms() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _this3.axios.get('/api/room').then(function (response) {
+                  _this3.rooms = response.data;
+                })["catch"](function (error) {
+                  console.log(error);
+                  _this3.rooms = [];
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    getUserValue: function getUserValue(event) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _this4.booking.user_id = event.target.value;
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    getRoomValue: function getRoomValue(event) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _this5.booking.room_id = event.target.value;
+
+              case 1:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
       }))();
     }
   }
@@ -1188,20 +1259,57 @@ var render = function () {
                       "select",
                       {
                         staticClass: "form-select",
-                        attrs: {
-                          name: "user-select",
-                          "aria-label": "Default select example",
+                        attrs: { name: "user-select" },
+                        on: {
+                          change: function ($event) {
+                            return _vm.getUserValue($event)
+                          },
                         },
                       },
                       [
                         _c("option", { attrs: { selected: "" } }, [
-                          _vm._v("Select the user you want to assign:"),
+                          _vm._v("-"),
                         ]),
                         _vm._v(" "),
                         _vm._l(_vm.users, function (u) {
-                          return _c("option", { key: u.id }, [
-                            _vm._v(_vm._s(u.name)),
-                          ])
+                          return _c(
+                            "option",
+                            { key: u.id, domProps: { value: u.id } },
+                            [_vm._v(_vm._s(u.name))]
+                          )
+                        }),
+                      ],
+                      2
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-12 mb-2" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Select the room:")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-select",
+                        attrs: { name: "room-select" },
+                        on: {
+                          change: function ($event) {
+                            return _vm.getRoomValue($event)
+                          },
+                        },
+                      },
+                      [
+                        _c("option", { attrs: { selected: "" } }, [
+                          _vm._v("-"),
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.rooms, function (r) {
+                          return _c(
+                            "option",
+                            { key: r.id, domProps: { value: r.id } },
+                            [_vm._v(_vm._s(r.name))]
+                          )
                         }),
                       ],
                       2
