@@ -119,8 +119,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(id);
       this.axios["delete"]("/api/booking/".concat(id)).then(function (response) {
         _this2.showBookings();
-      }).then(function (response) {
-        console.log("ID: " + id);
       })["catch"](function (error) {
         console.log(error.response);
       });

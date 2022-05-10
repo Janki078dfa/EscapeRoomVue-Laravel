@@ -71,8 +71,6 @@ export default {
             console.log(id);
             this.axios.delete(`/api/booking/${id}`).then(response => {
                 this.showBookings()
-            }).then(response => {
-                console.log("ID: " + id)
             }).catch(error => {
                 console.log(error.response)
             });

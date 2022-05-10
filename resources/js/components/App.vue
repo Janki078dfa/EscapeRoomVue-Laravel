@@ -16,11 +16,21 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link exact-active-class="active" to="/blogs" class="nav-link">Blogs</router-link>
+                            <router-link exact-active-class="active" to="/bookings" class="nav-link">Bookings
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link exact-active-class="active" to="/contact" class="nav-link">Contact
-                            </router-link>
+                            <router-link exact-active-class="active" to="/games" class="nav-link">Games</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link exact-active-class="active" to="/reviews" class="nav-link">Reviews</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link exact-active-class="active" to="/rooms" class="nav-link">Rooms</router-link>
+                        </li>
+
+                        <li class="nav-item">
+                            <router-link exact-active-class="active" to="/users" class="nav-link">Users</router-link>
                         </li>
                     </ul>
                 </div>

@@ -19928,9 +19928,28 @@ var render = function () {
                       "router-link",
                       {
                         staticClass: "nav-link",
-                        attrs: { "exact-active-class": "active", to: "/blogs" },
+                        attrs: {
+                          "exact-active-class": "active",
+                          to: "/bookings",
+                        },
                       },
-                      [_vm._v("Blogs")]
+                      [_vm._v("Bookings\n                        ")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { "exact-active-class": "active", to: "/games" },
+                      },
+                      [_vm._v("Games")]
                     ),
                   ],
                   1
@@ -19946,10 +19965,42 @@ var render = function () {
                         staticClass: "nav-link",
                         attrs: {
                           "exact-active-class": "active",
-                          to: "/contact",
+                          to: "/reviews",
                         },
                       },
-                      [_vm._v("Contact\n                        ")]
+                      [_vm._v("Reviews")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { "exact-active-class": "active", to: "/rooms" },
+                      },
+                      [_vm._v("Rooms")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { "exact-active-class": "active", to: "/users" },
+                      },
+                      [_vm._v("Users")]
                     ),
                   ],
                   1
