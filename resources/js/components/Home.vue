@@ -12,6 +12,7 @@
             <td>{{ r.user_id }}</td>
             <td>{{ r.room_id }}</td>
         </tr>
+
     </div>
 </template>
 
