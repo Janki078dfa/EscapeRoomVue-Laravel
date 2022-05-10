@@ -9,6 +9,12 @@ class Game extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'image',
+        'players',
+    ];
+
     protected $table = "games";
     /*
         public function rooms()
