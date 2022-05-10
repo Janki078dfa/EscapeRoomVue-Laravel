@@ -67,16 +67,16 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param int $id ;
      * @param Request $request
-     * @param Booking $b
      * @return JsonResponse
      */
-    public function update(Request $request, Booking $b): JsonResponse
+    public function update($id, Request $request): JsonResponse
     {
-        $b->fill($request->post())->save();
-        return response()->json([
-            'booking' => $b
-        ]);
+        $booking = Booking::find($id);
+        $booking->update($request->all());
+
+        return response()->json('Booking updated');
     }
 
     /**
@@ -89,7 +89,7 @@ class BookingController extends Controller
     {
         $booking = Booking::find($id);
         $booking->delete();
-        
+
         return response()->json([
             'msg' => 'Booking deleted'
         ]);

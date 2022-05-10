@@ -67,18 +67,17 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param int $id ;
      * @param Request $request
-     * @param Review $r
      * @return JsonResponse
      */
-    public function update(Request $request, Review $r): JsonResponse
+    public function update($id, Request $request): JsonResponse
     {
-        $r->fill($request->post())->save();
-        return response()->json([
-            'review' => $r
-        ]);
-    }
+        $review = Review::find($id);
+        $review->update($request->all());
 
+        return response()->json('Review updated');
+    }
     /**
      * Remove the specified resource from storage.
      *

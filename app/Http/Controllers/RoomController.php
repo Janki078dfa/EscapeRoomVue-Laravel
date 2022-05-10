@@ -67,16 +67,16 @@ class RoomController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param int $id ;
      * @param Request $request
-     * @param Room $r
      * @return JsonResponse
      */
-    public function update(Request $request, Room $r): JsonResponse
+    public function update($id, Request $request): JsonResponse
     {
-        $r->fill($request->post())->save();
-        return response()->json([
-            'room' => $r
-        ]);
+        $room = Room::find($id);
+        $room->update($request->all());
+
+        return response()->json('Room updated');
     }
 
     /**

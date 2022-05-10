@@ -67,16 +67,16 @@ class GameController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param int $id ;
      * @param Request $request
-     * @param Game $g
      * @return JsonResponse
      */
-    public function update(Request $request, Game $g): JsonResponse
+    public function update($id, Request $request): JsonResponse
     {
-        $g->fill($request->post())->save();
-        return response()->json([
-            'game' => $g
-        ]);
+        $game = Game::find($id);
+        $game->update($request->all());
+
+        return response()->json('Game updated');
     }
 
     /**
