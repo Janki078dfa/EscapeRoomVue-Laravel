@@ -62,16 +62,18 @@ export default {
         return {
             user: {
                 name: "",
+
                 dni: "",
                 phone: "",
                 email: "",
-                password: ""
+                password: "",
             },
         }
     },
+
     methods: {
         async create() {
-            await this.axios.post('/api/user', this.review).then(response => {
+            await this.axios.post('/api/user', this.user).then(response => {
                 this.$router.push({name: "showUser"})
             }).then(response => {
                 console.log(response)

@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         async create() {
-            await this.axios.post('/api/room', this.review).then(response => {
+            await this.axios.post('/api/room', this.room).then(response => {
                 this.$router.push({name: "showRoom"})
             }).then(response => {
                 console.log(response)

@@ -69,18 +69,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "bookings",
+  name: "users",
   data: function data() {
     return {
-      booking: []
+      user: []
     };
   },
   mounted: function mounted() {
-    this.show();
+    this.showUsers();
   },
   methods: {
-    show: function show() {
+    showUsers: function showUsers() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -89,11 +92,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.axios.get('/api/booking').then(function (response) {
-                  _this.booking = response.data;
+                return _this.axios.get('/api/user').then(function (response) {
+                  _this.user = response.data;
                 })["catch"](function (error) {
                   console.log(error);
-                  _this.booking = [];
+                  _this.user = [];
                 });
 
               case 2:
@@ -103,6 +106,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    deleteUser: function deleteUser(id) {
+      var _this2 = this;
+
+      console.log(id);
+      this.axios["delete"]("/api/user/".concat(id)).then(function (response) {
+        _this2.showUsers();
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     }
   }
 });
@@ -970,7 +983,7 @@ var render = function () {
           "router-link",
           {
             staticClass: "btn btn-success",
-            attrs: { to: { name: "createBooking" } },
+            attrs: { to: { name: "createUser" } },
           },
           [_c("i", { staticClass: "fas fa-plus-circle" })]
         ),
@@ -985,13 +998,17 @@ var render = function () {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.booking, function (blog) {
-              return _c("tr", { key: blog.id }, [
-                _c("td", [_vm._v(_vm._s(blog.id))]),
+            _vm._l(_vm.user, function (u) {
+              return _c("tr", { key: u.id }, [
+                _c("td", [_vm._v(_vm._s(u.id))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(blog.name))]),
+                _c("td", [_vm._v(_vm._s(u.name))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(blog.company))]),
+                _c("td", [_vm._v(_vm._s(u.dni))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(u.phone))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(u.email))]),
                 _vm._v(" "),
                 _c(
                   "td",
@@ -1001,7 +1018,7 @@ var render = function () {
                       {
                         staticClass: "btn btn-info",
                         attrs: {
-                          to: { name: "editarBlog", params: { id: blog.id } },
+                          to: { name: "updateUser", params: { id: u.id } },
                         },
                       },
                       [_c("i", { staticClass: "fas fa-edit" })]
@@ -1014,7 +1031,7 @@ var render = function () {
                         attrs: { type: "button" },
                         on: {
                           click: function ($event) {
-                            return _vm.borrarBlog(blog.id)
+                            return _vm.deleteUser(u.id)
                           },
                         },
                       },
@@ -1041,9 +1058,13 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Title")]),
+        _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Content")]),
+        _c("th", [_vm._v("DNI")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Phone")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
         _vm._v(" "),
         _c("th", [_vm._v("Actions")]),
       ]),
