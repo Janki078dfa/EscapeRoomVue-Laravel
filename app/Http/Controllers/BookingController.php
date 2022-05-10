@@ -82,12 +82,14 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Booking $b
+     * @param int $id
      * @return JsonResponse
      */
-    public function destroy(Booking $b): JsonResponse
+    public function destroy($id): JsonResponse
     {
-        $b->delete();
+        $booking = Booking::find($id);
+        $booking->delete();
+        
         return response()->json([
             'msg' => 'Booking deleted'
         ]);

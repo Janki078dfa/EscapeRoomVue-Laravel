@@ -82,12 +82,14 @@ class GameController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Game $g
+     * @param int $id
      * @return JsonResponse
      */
-    public function destroy(Game $g): JsonResponse
+    public function destroy($id): JsonResponse
     {
-        $g->delete();
+        $game = Game::find($id);
+        $game->delete();
+
         return response()->json([
             'msg' => 'Game deleted'
         ]);

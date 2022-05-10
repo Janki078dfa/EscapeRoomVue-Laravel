@@ -82,12 +82,14 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Review $r
+     * @param int $id
      * @return JsonResponse
      */
-    public function destroy(Review $r): JsonResponse
+    public function destroy($id): JsonResponse
     {
-        $r->delete();
+        $review = Review::find($id);
+        $review->delete();
+
         return response()->json([
             'msg' => 'Review deleted'
         ]);

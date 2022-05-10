@@ -28,7 +28,7 @@
                         <td>
                             <router-link :to='{name:"updateUser",params:{id:u.id}}' class="btn btn-info"><i
                                 class="fas fa-edit"></i></router-link>
-                            <a type="button" @click="deleteUser(u.id)" class="btn btn-danger"><i
+                            <a type="button" v-on:click="deleteUser(u.id)" class="btn btn-danger"><i
                                 class="fas fa-trash"></i></a>
                         </td>
                     </tr>
@@ -61,14 +61,12 @@ export default {
             })
         },
 
-        deleteUser(id) {
-            console.log(id);
-            this.axios.delete(`/api/user/${id}`).then(response => {
-                this.showUsers()
+        async deleteUser(id) {
+            await this.axios.delete('/api/user/' + id).then(response => {
+               this.showUsers();
             }).catch(error => {
-                console.log(error.response)
+                console.log(error);
             });
-
         }
     }
 }

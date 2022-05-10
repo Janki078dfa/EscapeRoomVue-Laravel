@@ -82,12 +82,13 @@ class RoomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Room $r
+     * @param int $id
      * @return JsonResponse
      */
-    public function destroy(Room $r): JsonResponse
+    public function destroy($id): JsonResponse
     {
-        $r->delete();
+        $room = Room::find($id);
+        $room->delete();
         return response()->json([
             'msg' => 'Room deleted'
         ]);
