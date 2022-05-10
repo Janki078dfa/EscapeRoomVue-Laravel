@@ -99,6 +99,8 @@ export default {
         async readBookings() {
             await this.axios.get(`/api/booking/${this.$route.params.id}`).then(response => {
                 const {name, company, email, phone, country, user_id, room_id} = response.data
+                console.log(response);
+
                 this.booking.name = name
                 this.booking.company = company
                 this.booking.email = email

@@ -144,6 +144,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       country = _response$data.country,
                       user_id = _response$data.user_id,
                       room_id = _response$data.room_id;
+                  console.log(response);
                   _this.booking.name = name;
                   _this.booking.company = company;
                   _this.booking.email = email;
