@@ -1,13 +1,116 @@
 <template>
-
+    <div class="app">
+        <carousel>
+            <carousel-slide v-for="slide in slides" :key="slide" class="carousel-slider">
+                <img :src="slide" :alt="slide">
+            </carousel-slide>
+        </carousel>
+        <tr v-for="r in review" :key="r.id">
+            <td>{{ r.id }}</td>
+            <td>{{ r.comment }}</td>
+            <td>{{ r.rate }}</td>
+            <td>{{ r.user_id }}</td>
+            <td>{{ r.room_id }}</td>
+        </tr>
+    </div>
 </template>
 
 <script>
+import Carousel from '../Carousel';
+import CarouselSlide from '../CarouselSlide';
+
 export default {
-    name: "Home"
+    data() {
+        return {
+            slides: [
+                'https://picsum.photos/id/230/600/300',
+                'https://picsum.photos/id/231/600/300',
+                'https://picsum.photos/id/232/600/300',
+                'https://picsum.photos/id/233/600/300',
+                'https://picsum.photos/id/234/600/300',
+                'https://picsum.photos/id/235/600/300',
+                'https://picsum.photos/id/236/600/300',
+            ],
+            review: [],
+
+            mounted() {
+                this.showReviews()
+            },
+            methods: {
+                async showReviews() {
+                    await this.axios.get('/api/review').then(response => {
+                        this.review = response.data
+                    }).catch(error => {
+                        console.log(error)
+                        this.review = []
+                    })
+                },
+            }
+        }
+    },
+    components: {
+        Carousel: Carousel,
+        CarouselSlide: CarouselSlide,
+    }
 }
 </script>
 
-<style scoped>
+<style>
+.app {
+    display: flex;
+    justify-content: center;
+}
 
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 800px;
+    height: 500px;
+    z-index: 10;
+}
+
+.btn {
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid transparent;
+    margin: 5px 10px;
+    color: #FFF;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    margin-top: -25px;
+    z-index: 2;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-next {
+    top: 50%;
+    right: 0;
+}
+
+.btn-prev {
+    top: 50%;
+    left: 0;
+}
+
+.carousel-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.carousel-slider img {
+    width: 100%;
+    height: 100%;
+}
 </style>
+

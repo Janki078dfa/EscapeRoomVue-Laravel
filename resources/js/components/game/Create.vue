@@ -15,6 +15,13 @@
 
                             <div class="col-12 mb-2">
                                 <div class="form-group">
+                                    <label>Image</label>
+                                    <input type="text" class="form-control" v-model="game.image">
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-2">
+                                <div class="form-group">
                                     <label>Players</label>
                                     <input type="number" class="form-control" v-model="game.players">
                                 </div>
@@ -40,7 +47,7 @@ export default {
         return {
             game: {
                 name: "",
-                image: "hola.jpg",
+                image: "",
                 players: "",
             },
         }

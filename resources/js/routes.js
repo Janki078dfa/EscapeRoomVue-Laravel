@@ -1,4 +1,6 @@
 const Home = () => import('./components/Home');
+const LogIn = () => import('./components/LogIn');
+const SignUp = () => import('./components/SignUp');
 
 const ShowBooking = () => import('./components/booking/Read');
 const CreateBooking = () => import('./components/booking/Create');
@@ -52,4 +54,8 @@ export const routes = [{
     name: 'createUser', path: '/create_user', component: CreateUser
 }, {
     name: 'updateUser', path: '/update_user/:id', component: UpdateUser
+}, {
+    name: 'logIn', path: '/login', component: LogIn
+}, {
+    name: 'signUp', path: '/signup', component: SignUp
 }]

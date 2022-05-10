@@ -2243,6 +2243,14 @@ var Home = function Home() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home */ "./resources/js/components/Home.vue"));
 };
 
+var LogIn = function LogIn() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_LogIn_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/LogIn */ "./resources/js/components/LogIn.vue"));
+};
+
+var SignUp = function SignUp() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_SignUp_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/SignUp */ "./resources/js/components/SignUp.vue"));
+};
+
 var ShowBooking = function ShowBooking() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_booking_Read_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/booking/Read */ "./resources/js/components/booking/Read.vue"));
 };
@@ -2367,6 +2375,14 @@ var routes = [{
   name: 'updateUser',
   path: '/update_user/:id',
   component: UpdateUser
+}, {
+  name: 'logIn',
+  path: '/login',
+  component: LogIn
+}, {
+  name: 'signUp',
+  path: '/signup',
+  component: SignUp
 }];
 
 /***/ }),
@@ -35479,7 +35495,7 @@ Vue.compile = compileToFunctions;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_booking_Read_vue":1,"resources_js_components_booking_Create_vue":1,"resources_js_components_booking_Update_vue":1,"resources_js_components_game_Read_vue":1,"resources_js_components_game_Create_vue":1,"resources_js_components_game_Update_vue":1,"resources_js_components_review_Read_vue":1,"resources_js_components_review_Create_vue":1,"resources_js_components_review_Update_vue":1,"resources_js_components_room_Read_vue":1,"resources_js_components_room_Create_vue":1,"resources_js_components_room_Update_vue":1,"resources_js_components_user_Read_vue":1,"resources_js_components_user_Create_vue":1,"resources_js_components_user_Update_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_LogIn_vue":1,"resources_js_components_SignUp_vue":1,"resources_js_components_booking_Read_vue":1,"resources_js_components_booking_Create_vue":1,"resources_js_components_booking_Update_vue":1,"resources_js_components_game_Read_vue":1,"resources_js_components_game_Create_vue":1,"resources_js_components_game_Update_vue":1,"resources_js_components_review_Read_vue":1,"resources_js_components_review_Create_vue":1,"resources_js_components_review_Update_vue":1,"resources_js_components_room_Read_vue":1,"resources_js_components_room_Create_vue":1,"resources_js_components_room_Update_vue":1,"resources_js_components_user_Read_vue":1,"resources_js_components_user_Create_vue":1,"resources_js_components_user_Update_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
